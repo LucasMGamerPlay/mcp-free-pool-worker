@@ -1,0 +1,16 @@
+node_modules/
+dist/
+
+# secrets must never be committed (the worker's own blocklist also refuses to read them)
+.env*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*
+id_rsa*
+secrets*
+
+*.bak
+tmp-smoke/

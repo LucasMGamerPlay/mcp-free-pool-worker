@@ -1,0 +1,5 @@
+# ~/.codex/config.toml
+[mcp_servers.free-pool-worker]
+command = "node"
+args = ["C:/path/to/mcp-free-pool-worker/dist/src/index.js"]
+env = { WORKSPACE_ROOT = "C:/path/to/your/project" }

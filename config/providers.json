@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "providers": [
+    {
+      "id": "groq",
+      "base_url": "https://api.groq.com/openai/v1",
+      "models": ["openai/gpt-oss-120b", "qwen/qwen3.8-27b"],
+      "env_key": "GROQ_API_KEY",
+      "env_keys": "GROQ_API_KEYS",
+      "max_context": 131072,
+      "max_output": 8192,
+      "rpm": 30
+    },
+    {
+      "id": "cerebras",
+      "base_url": "https://api.cerebras.ai/v1",
+      "models": ["llama-3.3-70b", "qwen-3-32b"],
+      "env_key": "CEREBRAS_API_KEY",
+      "max_context": 65536,
+      "max_output": 8192,
+      "rpm": 30
+    },
+    {
+      "id": "google",
+      "base_url": "https://generativelanguage.googleapis.com/v1beta/openai",
+      "models": ["gemini-3.1-flash-lite", "gemini-3.5-flash-lite", "gemini-3.5-flash"],
+      "env_key": "GOOGLE_API_KEY",
+      "max_context": 1000000,
+      "max_output": 8192,
+      "rpm": 15
+    },
+    {
+      "id": "openrouter",
+      "base_url": "https://openrouter.ai/api/v1",
+      "models": ["cohere/north-mini-code:free", "openrouter/free", "nvidia/nemotron-3.5-lightning:free"],
+      "env_key": "OPENROUTER_API_KEY",
+      "max_context": 131072,
+      "max_output": 8192,
+      "rpm": 20
+    },
+    {
+      "id": "github",
+      "base_url": "https://models.github.ai/inference",
+      "models": ["openai/gpt-4.1-mini", "openai/gpt-4o-mini"],
+      "env_key": "GITHUB_TOKEN",
+      "max_context": 128000,
+      "max_output": 8192,
+      "rpm": 10
+    },
+    {
+      "id": "local",
+      "base_url": "http://localhost:1234/v1",
+      "models": ["qwen2.5-coder-7b-instruct"],
+      "max_context": 32768,
+      "max_output": 4096,
+      "rpm": 0
+    }
+  ],
+  "routing": {
+    "coding": ["groq", "cerebras", "openrouter", "google", "github", "local"],
+    "tests": ["groq", "cerebras", "openrouter", "google", "github", "local"],
+    "docs": ["groq", "openrouter", "google", "local"],
+    "analysis": ["google", "openrouter", "groq", "github", "local"],
+    "refactor": ["cerebras", "groq", "openrouter", "google", "local"]
+  }
+}
